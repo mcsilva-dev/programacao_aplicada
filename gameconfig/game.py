@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from pygame import init, display
+import pygame
 from .menu import Menu
 
 class Game:
     def __init__(self, window: tuple = (600,480)) -> None:
-        init()
-        self.window = display.set_mode(size=window)
+        pygame.init()
+        self.window = pygame.display.set_mode(size=window)
         self.run()
 
     def run(self) -> None:
