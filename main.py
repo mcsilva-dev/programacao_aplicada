@@ -1,5 +1,9 @@
 from gameconfig.game import Game
+import gameconfig.constants as constants
 
-game = Game((576, 324))
+width = constants.WIDTH
+height = constants.HEIGHT
+
+game = Game((width, height))
 game.run()
 

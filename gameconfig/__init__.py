@@ -6,6 +6,7 @@ from .entity import Entity
 from .entityFactory import EntityFactory
 from .level import Level
 from .player import Player
+import gameconfig.constants as constants
 
 __all__=[
     'Game',
@@ -15,5 +16,6 @@ __all__=[
     'Entity',
     'EntityFactory',
     'Level',
-    'Player'
+    'Player',
+    'constants'
 ]
