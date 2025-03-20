@@ -43,6 +43,8 @@ class Menu:
                             menu_option -=1
                         else:
                             menu_option = len(constants.MENU_OPTIONS) - 1
+                    if event.key == pygame.K_RETURN:
+                        return menu_option
                     
                     
             pygame.display.flip()
