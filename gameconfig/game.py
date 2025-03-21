@@ -12,9 +12,12 @@ class Game:
     def run(self) -> None:
         while True:
             menu = Menu(self.window)
-            menu.run()
-            # Check for all events
-            # for event in pygame.event.get():
-            #     if event.type == pygame.QUIT:
-            #         pygame.quit()
-            #         break
+            option = menu.run()
+            match option:
+                case 0:
+                    print('Start Game')
+                case 1:
+                    print('Score')
+                case 2:
+                    pygame.quit()
+                    quit()
