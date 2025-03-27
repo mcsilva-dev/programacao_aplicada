@@ -4,7 +4,14 @@ import pygame
 from pygame.font import Font
 from pygame.surface import Surface
 from pygame.rect import Rect
-from .configs import COLOR_RED, COLOR_WHITE, COLOR_YELLOW
+from .configs import (
+    COLOR_RED,
+    COLOR_WHITE,
+    COLOR_YELLOW,
+    MENU_OPTION,
+    TITLE_FONT,
+    TEXT_FONT
+)
 
 
 class Menu:
@@ -12,11 +19,7 @@ class Menu:
         self.window = window
         self.surface = pygame.image.load('./assets/backgrounds/m1/main_menu.png')
         self.rect = self.surface.get_rect()
-        self.menu_options = [
-            'Start Game',
-            'Score',
-            'Exit'
-        ]
+        self.menu_options = MENU_OPTION
 
     def run(self, ):
         position = 0
@@ -25,8 +28,8 @@ class Menu:
         while True:
             pygame.display.flip()
             self.window.blit(source=self.surface, dest=self.rect)
-            self.menu_text(50, 'Space', COLOR_RED, (576 / 2, 50))
-            self.menu_text(50, 'Ships', COLOR_RED, (576 / 2, 90))
+            self.menu_text(50, 'SPACE', TITLE_FONT, COLOR_RED, (576 / 2, 50))
+            self.menu_text(50, 'SHIPS', TITLE_FONT,COLOR_RED, (576 / 2, 90))
     
             # Check for all events
             for event in pygame.event.get():
@@ -49,13 +52,13 @@ class Menu:
                             
             for index, option in enumerate(self.menu_options):
                 if index == position:
-                    self.menu_text(30, option, COLOR_YELLOW, (576 / 2, 180 + (30 * index)))
+                    self.menu_text(30, option,TEXT_FONT, COLOR_YELLOW, (576 / 2, 180 + (30 * index)))
                 else:
-                    self.menu_text(30, option, COLOR_WHITE, (576 / 2, 180 + (30 * index)))
+                    self.menu_text(30, option,TEXT_FONT, COLOR_WHITE, (576 / 2, 180 + (30 * index)))
                 
 
-    def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
-        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
-        text_rect: Rect = text_surf.get_rect(center=text_center_pos)
+    def menu_text(self, size: int, text: str, font: str, color: tuple, pos: tuple):
+        text_font: Font = pygame.font.Font(font, size)
+        text_surf: Surface = text_font.render(text, True, color).convert_alpha()
+        text_rect: Rect = text_surf.get_rect(center=pos)
         self.window.blit(source=text_surf, dest=text_rect)

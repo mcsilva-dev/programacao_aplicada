@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import pygame
 from .menu import Menu
+from .level import Level
+from .configs import MENU_OPTION
 
 class Game:
     def __init__(self, window: tuple = (600,480)) -> None:
@@ -15,7 +17,8 @@ class Game:
             option = menu.run()
             match option:
                 case 0:
-                    print('Start Game')
+                    level = Level(self.window, 'level 1')
+                    level.run()
                 case 1:
                     print('Score')
                 case 2:
